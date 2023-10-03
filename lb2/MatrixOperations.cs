@@ -8,28 +8,9 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    partial class MyMatrix
+    public partial class MyMatrix
     {
         public static MyMatrix operator +(MyMatrix matrix1, MyMatrix matrix2)
-        {
-
-            if (matrix1.Height != matrix2.Height || matrix1.Width != matrix2.Width)
-            {
-                throw new Exception("Error");
-            }
-            double[,] result = new double[matrix1.Height, matrix1.Width];
-
-            for (int i = 0; i < matrix1.Height; i++)
-            {
-                for (int j = 0; j < matrix1.Width; j++)
-                {
-                    result[i, j] = matrix1[i, j] + matrix2[i, j];
-                }
-
-            }
-            return new MyMatrix(result);
-        }
-        public static MyMatrix operator *(MyMatrix matrix1, MyMatrix matrix2)
         {
 
             if (matrix1.Height == matrix2.Width)
@@ -45,6 +26,36 @@ namespace Task_1
 
                 }
                 return new MyMatrix(result);
+            }
+            else
+            {
+
+                throw new Exception("Error");
+            }
+            
+        }
+        public static MyMatrix operator *(MyMatrix matrix1, MyMatrix matrix2)
+        {
+
+            if (matrix1.Height == matrix2.Width)
+            {
+                double[,] result = new double[matrix1.Height, matrix1.Width];
+
+                for (int i = 0; i < matrix1.Height; i++)
+                {
+                    for (int j = 0; j < matrix2.Width; j++)
+                    {
+                        double sum = 0;
+                        for (int k = 0; k < matrix1.Width; k++)
+                        {
+                            sum += matrix1[i, j] * matrix2[k, j];
+                        }
+                        result[i, j] = sum;
+
+                    }
+
+                }
+                return new MyMatrix(result);
 
             }
             else
@@ -55,17 +66,20 @@ namespace Task_1
         }
         private double[,] GetTransponedArray()
         {
-            double[,] transponedArray = new double[Width, Height];
 
-            for (int i = 0; i < Height; i++)
+            int rows = Height;
+            int cols = Width;
+
+            double[,] transponedArray = new double[cols, rows];
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < Width; j++)
+                for (int j = 0; j < cols; j++)
                 {
-                    transponedArray[i, j] = this.matrix[i, j];
-
+                    transponedArray[j, i] = this.matrix[i, j];
                 }
-
             }
+
             return transponedArray;
         }
         public MyMatrix GetTransponedCopy()
@@ -75,9 +89,8 @@ namespace Task_1
         }
         public void TransponeMe()
         {
-            double[,] transponedArray = GetTransponedArray();
-            MyMatrix transponedMatrix = new MyMatrix(transponedArray);
-            this.matrix = transponedMatrix.matrix;
+            double[,] transposedData = GetTransponedArray();
+            this.matrix = transposedData;
 
         }
 
@@ -113,11 +126,10 @@ namespace Task_1
                     tempMatrix[i, j] = matrix[i, j];
                 }
 
+            }
+
             }*/
-
-
-
-        }
     }
-
 }
+
+

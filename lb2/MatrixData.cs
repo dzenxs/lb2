@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Task_1
 {
-    partial class MyMatrix
+    public partial class MyMatrix
 
     {
-        public double[,] matrix;
+        private double[,] matrix;
 
         public MyMatrix(MyMatrix newMatrix)
         {
@@ -76,8 +76,9 @@ namespace Task_1
                 }
                 else
                 {
-                    matrix = null;
+                    throw new Exception("matrix can only have number");
                 }
+
                 
 
             }

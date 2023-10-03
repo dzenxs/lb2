@@ -10,6 +10,14 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
+            MyMatrix matrix1 = new MyMatrix(new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } });
+            MyMatrix matrix2 = new MyMatrix(new double[,] { { 9, 8, 7 }, { 6, 5, 4 }, { 3, 2, 1 } });
+
+            MyMatrix result = matrix1 * matrix2;
+
+            Console.WriteLine(result.ToString());
+
+
             double[,] data = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
             MyMatrix matrixData = new MyMatrix(data);
@@ -17,9 +25,19 @@ namespace Task_1
             Console.WriteLine(matrixData);
 
             Console.WriteLine("\n\n");
+            Console.WriteLine("TEST");
+            double[][] test = new double[][]
+               {
+                    new double[] { 1, 2, 3 },
+                    new double[] { 4, 5, 6 },
+                    new double[] { 7, 8, 9 }
+               };
 
+            MyMatrix test1 = new MyMatrix(test);
 
+            MyMatrix transponeMatrix = test1.GetTransponedCopy();
 
+            Console.WriteLine(transponeMatrix);
 
             try
             {
@@ -30,7 +48,7 @@ namespace Task_1
                     new double[] { 4, 5, 6 },
                     new double[] { 7, 8, 9 }
                 };
-
+                
 
                 MyMatrix matrixJagged = new MyMatrix(jaggedMatrix);
 
