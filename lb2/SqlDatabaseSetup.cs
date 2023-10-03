@@ -20,12 +20,18 @@ namespace Task_1
 
             MyMatrix matrix = new MyMatrix(data);
 
-
-            
-            CollectionAssert.AreEqual(data, matrix.matrix);
+            for (int i = 0; i < matrix.Height; i++)
+            {
+                for (int j = 0; j < matrix.Width; j++)
+                {
+                    Assert.AreEqual(data[i, j], matrix[i, j]);
+                }
+            }
+            //CollectionAssert.AreEqual(data, matrix.matrix);
         }
 
         [TestMethod]
+
         public void TestInitializeWithJaggedArray()
         {
 
@@ -41,9 +47,14 @@ namespace Task_1
             MyMatrix matrix = new MyMatrix(jaggedData);
 
             
-            CollectionAssert.AreEqual(expectedData, matrix.matrix);
+            for (int i = 0; i < matrix.Height; i++)
+            {
+                for (int j = 0; j < matrix.Width; j++)
+                {
+                    Assert.AreEqual(expectedData[i, j], matrix[i, j]);
+                }
+            }
         }
-
         [TestMethod]
         public void TestInitializeWithStringArray()
         {
@@ -55,7 +66,13 @@ namespace Task_1
             MyMatrix matrix = new MyMatrix(stringData);
 
             
-            CollectionAssert.AreEqual(expectedData, matrix.matrix);
+            for (int i = 0; i < matrix.Height; i++)
+            {
+                for (int j = 0; j < matrix.Width; j++)
+                {
+                    Assert.AreEqual(expectedData[i, j], matrix[i, j]);
+                }
+            }
         }
 
         [TestMethod]
@@ -69,7 +86,14 @@ namespace Task_1
             MyMatrix matrix = new MyMatrix(stringData);
 
             
-            CollectionAssert.AreEqual(expectedData, matrix.matrix);
+            for (int i = 0; i < matrix.Height; i++)
+            {
+                for (int j = 0; j < matrix.Width; j++)
+                {
+                    Assert.AreEqual(expectedData[i, j], matrix[i, j]);
+                }
+            }
+            //CollectionAssert.AreEqual(expectedData, matrix.matrix);
         }
         
     }
